@@ -149,7 +149,7 @@ func getHost(Url, ht string) (host string) {
 	checkErr(err)
 	switch ht {
 	case "v1":
-		host = u.Scheme + "://" + u.Host + filepath.Dir(u.EscapedPath())
+		host = u.Scheme + "://" + u.Host + strings.ReplaceAll(filepath.Dir(u.EscapedPath()), "\\", "/")
 	case "v2":
 		host = u.Scheme + "://" + u.Host
 	}
